@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaf Disease Detection System - Computer Vision Project</title>
+  <meta name="description" content="A community service project leveraging image processing (Python, OpenCV, NumPy) to help farmers and students detect plant leaf diseases.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍃</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="app-container">
+    
+    <!-- --- NAVIGATION HEADER --- -->
+    <header class="main-header">
+      <div class="nav-container">
+        <a href="#home" class="logo" id="header-logo">
+          <div class="logo-icon">
+            <i data-lucide="leaf"></i>
+          </div>
+          <span>AgriVision</span>
+        </a>
+        
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+          <i data-lucide="menu"></i>
+        </button>
+        
+        <ul class="nav-menu" id="nav-menu">
+          <li><span class="nav-link active" data-target="home"><i data-lucide="home"></i>Home</span></li>
+          <li><span class="nav-link" data-target="about"><i data-lucide="info"></i>About Project</span></li>
+          <li><span class="nav-link" data-target="detection"><i data-lucide="scan-face"></i>Disease Detection</span></li>
+          <li><span class="nav-link" data-target="info"><i data-lucide="book-open"></i>Disease Info</span></li>
+          <li><span class="nav-link" data-target="dashboard"><i data-lucide="bar-chart-3"></i>Dashboard</span></li>
+          <li><span class="nav-link" data-target="contact"><i data-lucide="phone"></i>Contact Us</span></li>
+        </ul>
+      </div>
+    </header>
+    
+    <!-- --- MAIN CONTENT --- -->
+    <main class="main-content">
+      
+      <!-- === SECTION: HOME === -->
+      <section class="view-section active" id="home">
+        <div class="hero-section">
+          <div class="hero-container">
+            <div class="hero-tag">
+              <i data-lucide="sparkles"></i> College Community Service Project
+            </div>
+            <h1 class="hero-title">Leaf Disease Detection System</h1>
+            <p class="hero-desc">Empowering farmers and agriculture students with instant crop health diagnosis using advanced computer vision and basic image processing algorithms.</p>
+            <div class="hero-cta">
+              <button class="btn btn-accent" id="hero-upload-btn"><i data-lucide="upload-cloud"></i>Upload Leaf Image</button>
+              <button class="btn btn-secondary" id="hero-learn-btn" style="color:#fff; border-color:#fff;"><i data-lucide="arrow-right"></i>Learn More</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Features Showcase Grid -->
+        <div class="features-container">
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="zap"></i></div>
+            <h3>Instant Diagnostics</h3>
+            <p>Upload a leaf photograph and receive structural disease identification, localized confidence scores, and instant treatment suggestions in under 3 seconds.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="activity"></i></div>
+            <h3>OpenCV Core</h3>
+            <p>Built using edge detection, color thresholding, and morphological transformations in Python to pinpoint lesions and compute damage ratios accurately.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+            <h3>Prevention Centric</h3>
+            <p>Receive dual treatment suggestions spanning standard agricultural chemicals and organic home remedies to fit sustainable farming needs.</p>
+          </div>
+        </div>
+        
+        <!-- Technology Stack Banner -->
+        <div class="tech-banner">
+          <h2 class="tech-banner-title">Underlying Technology Stack</h2>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <i data-lucide="code"></i>
+              <span>Python 3.10</span>
+              <p>Core backend logic & data structuring</p>
+            </div>
+            <div class="tech-item">
+              <i data-lucide="eye"></i>
+              <span>OpenCV</span>
+              <p>Image filtering, segmentation & contouring</p>
+            </div>
+            <div class="tech-item">
+              <i data-lucide="binary"></i>
+              <span>NumPy</span>
+              <p>High-performance array operations on pixel grids</p>
+            </div>
+            <div class="tech-item">
+              <i data-lucide="layers"></i>
+              <span>Image Processing</span>
+              <p>Thresholding, masking, and feature extraction</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- === SECTION: ABOUT === -->
+      <section class="view-section" id="about">
+        <div class="section-header">
+          <h2>About The Project</h2>
+          <p>Harnessing computer vision technology to secure food supplies and support sustainable farming practices.</p>
+        </div>
+        
+        <div class="about-grid">
+          <div class="about-info">
+            <h3>Computer Vision in Agriculture</h3>
+            <p>Manual identification of crop diseases requires expert oversight, which is often inaccessible to small-scale farmers in remote villages. This system simulates professional diagnostic expertise using structural image processing algorithms.</p>
+            <p>By executing Gaussian blurring to eliminate background noises, translating RGB coordinates into custom HSL/HSV channels, and isolating green tones, we expose hidden brown and yellow fungal lesions on the leaf surfaces. This visual contrast is evaluated using NumPy array masks to determine the infection severity metric.</p>
+            <div class="highlight-box">
+              "Early identification of leaf infections can prevent up to 40% of seasonal yield loss in crops like tomatoes, potatoes, and rice."
+            </div>
+          </div>
+          <div class="about-visual">
+            <img src="assets/healthy_leaf.png" alt="Healthy tomato leaf sample demonstrating perfect foliage structure">
+          </div>
+        </div>
+        
+        <!-- Project Objectives -->
+        <div class="objectives-section">
+          <h3 style="text-align: center; font-size: 1.6rem;">Key Objectives of the Project</h3>
+          <div class="objectives-grid">
+            <div class="objective-item">
+              <div class="objective-icon"><i data-lucide="target"></i></div>
+              <div class="objective-content">
+                <h4>Accessible Farming Solutions</h4>
+                <p>Provide a free, easy-to-use digital tool for farmers to quickly identify common crop pests and leaf diseases without requiring expensive hardware.</p>
+              </div>
+            </div>
+            <div class="objective-item">
+              <div class="objective-icon"><i data-lucide="graduation-cap"></i></div>
+              <div class="objective-content">
+                <h4>Educational Reference Resource</h4>
+                <p>Offer a learning sandbox for students of agricultural sciences and computer engineering to study basic computer vision applications.</p>
+              </div>
+            </div>
+            <div class="objective-item">
+              <div class="objective-icon"><i data-lucide="leaf"></i></div>
+              <div class="objective-content">
+                <h4>Eco-Friendly Organic Advice</h4>
+                <p>Promote eco-friendly farming practices by presenting biological and organic solutions alongside chemical treatments for minor infections.</p>
+              </div>
+            </div>
+            <div class="objective-item">
+              <div class="objective-icon"><i data-lucide="line-chart"></i></div>
+              <div class="objective-content">
+                <h4>Statistical Disease Mapping</h4>
+                <p>Maintain metrics showing crop health and infection patterns to help predict seasonal outbreak waves.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div style="margin-bottom: 2rem;">
+          <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.6rem;">Benefits for the Farming Community</h3>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="icon"><i data-lucide="piggy-bank"></i></div>
+              <h4>Minimize Treatment Costs</h4>
+              <p>Identify the exact disease early to apply specific, localized treatments. This avoids wasting expensive broad-spectrum pesticides.</p>
+            </div>
+            <div class="benefit-card">
+              <div class="icon"><i data-lucide="trending-up"></i></div>
+              <h4>Boost Crop Yields</h4>
+              <p>Detect early signs of blight or spots to contain the spread, saving the crop yield before it runs out of control.</p>
+            </div>
+            <div class="benefit-card">
+              <div class="icon"><i data-lucide="users"></i></div>
+              <h4>Empower Rural Farmers</h4>
+              <p>Provide smallholder and young farmers with instant scientific expertise directly on their mobile phones.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- === SECTION: DISEASE DETECTION === -->
+      <section class="view-section" id="detection">
+        <div class="section-header">
+          <h2>Leaf Disease Diagnostics</h2>
+          <p>Upload a clear photograph of a single leaf to run our mock processing pipeline and generate diagnostic reports.</p>
+        </div>
+        
+        <div class="detection-container">
+          <!-- Left side: Upload & Preview -->
+          <div class="upload-card">
+            <div class="drop-zone" id="drop-zone">
+              <div class="drop-icon"><i data-lucide="upload-cloud"></i></div>
+              <p class="drop-text">Drag & drop your leaf image here</p>
+              <p class="drop-subtext">Supports PNG, JPG, or JPEG (Max 5MB)</p>
+              <button class="btn btn-primary" onclick="document.getElementById('file-input').click()"><i data-lucide="folder-open"></i>Browse Files</button>
+              <input type="file" id="file-input" accept="image/*">
+            </div>
+            
+            <div class="preview-container" id="preview-container">
+              <img id="preview-image" src="" alt="Foliage preview upload">
+              <div class="scan-line" id="scan-line"></div>
+              <div class="scanner-overlay" id="scanner-overlay">
+                <div>
+                  <i data-lucide="loader-2" class="lucide-spin" style="margin-bottom: 0.5rem; width: 30px; height: 30px;"></i>
+                  <p>Processing with OpenCV...</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="upload-actions" id="upload-actions" style="display: none;">
+              <button class="btn btn-accent" id="analyze-btn"><i data-lucide="search-code"></i>Run Analysis</button>
+              <button class="btn btn-secondary" id="reset-btn"><i data-lucide="refresh-cw"></i>Clear</button>
+            </div>
+          </div>
+          
+          <!-- Right side: Results & Logs -->
+          <div class="result-column">
+            <!-- Results card -->
+            <div class="result-placeholder" id="result-placeholder">
+              <i data-lucide="help-circle"></i>
+              <h3>Awaiting Leaf Image</h3>
+              <p>Please browse or drop a leaf image and press "Run Analysis" to display computer vision processing logs and results.</p>
+            </div>
+            
+            <div class="result-card" id="result-card">
+              <div class="result-header">
+                <h3>Diagnostic Result</h3>
+                <span class="confidence-badge" id="confidence-badge">94.8% Match</span>
+              </div>
+              <div class="result-body">
+                <div class="disease-summary">
+                  <div class="disease-icon" id="disease-icon">
+                    <i data-lucide="bug"></i>
+                  </div>
+                  <div class="disease-info-box">
+                    <h4 id="disease-title">Tomato Early Blight</h4>
+                    <p id="crop-type">Crop Host: Tomato (Solanum lycopersicum)</p>
+                  </div>
+                </div>
+                
+                <!-- Inner Result Tabs -->
+                <div class="result-tabs-nav">
+                  <button class="result-tab-btn active" data-tab="symptoms">Symptoms</button>
+                  <button class="result-tab-btn" data-tab="causes">Causes</button>
+                  <button class="result-tab-btn" data-tab="treatment">Suggested Treatments</button>
+                </div>
+                
+                <div class="result-tab-content active" id="res-symptoms">
+                  <p id="symptom-text">Concentric dark brown rings resembling target spots, primarily on older lower leaves, leading to yellowing and premature leaf drop.</p>
+                </div>
+                
+                <div class="result-tab-content" id="res-causes">
+                  <p id="cause-text">Triggered by the fungus Alternaria solani. Flourishes in warm, humid weather with frequent rain or overhead sprinkler watering.</p>
+                </div>
+                
+                <div class="result-tab-content" id="res-treatment">
+                  <ul class="treatment-list" id="treatment-list">
+                    <li><i data-lucide="check-circle-2"></i><span>Apply copper-based organic fungicides immediately.</span></li>
+                    <li><i data-lucide="check-circle-2"></i><span>Prune lower leaves to increase air circulation.</span></li>
+                    <li><i data-lucide="check-circle-2"></i><span>Water at the root zone to avoid wetting the foliage.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Simulation Terminal -->
+            <div class="pipeline-card">
+              <div class="pipeline-header">
+                <span>Computer Vision Pipeline Terminal</span>
+                <div class="pipeline-dots">
+                  <div class="pipeline-dot red"></div>
+                  <div class="pipeline-dot yellow"></div>
+                  <div class="pipeline-dot green"></div>
+                </div>
+              </div>
+              <div class="pipeline-logs" id="pipeline-logs">
+                <div class="pipeline-log-line system">> System online. Awaiting image buffer...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- === SECTION: DISEASE INFO === -->
+      <section class="view-section" id="info">
+        <div class="section-header">
+          <h2>Disease Encyclopedia</h2>
+          <p>Select a crop leaf condition to explore clinical symptoms, biological causes, and recommended prevention strategies.</p>
+        </div>
+        
+        <!-- Selector buttons -->
+        <div class="disease-selector">
+          <button class="selector-btn active" data-disease="healthy">Healthy Leaf</button>
+          <button class="selector-btn" data-disease="early_blight">Tomato Early Blight</button>
+          <button class="selector-btn" data-disease="late_blight">Tomato Late Blight</button>
+          <button class="selector-btn" data-disease="brown_spot">Rice Brown Spot</button>
+        </div>
+        
+        <!-- Detailed Panels (Controlled by JS) -->
+        <!-- Panel: Healthy -->
+        <div class="disease-info-display active" id="info-healthy">
+          <div class="info-visual-panel">
+            <img src="assets/healthy_leaf.png" alt="Healthy tomato leaf illustration">
+            <div class="info-label-overlay">
+              <h3>Healthy Crop Leaf</h3>
+              <span>Target Baseline: Normal Chlorophyll Foliage</span>
+            </div>
+          </div>
+          <div class="info-content-panel">
+            <div class="info-tabs-nav">
+              <button class="info-tab-btn active" data-tab="symptoms">Visual Markers</button>
+              <button class="info-tab-btn" data-tab="causes">Maintenance</button>
+              <button class="info-tab-btn" data-tab="prevention">Best Practices</button>
+            </div>
+            <div class="info-tab-contents">
+              <div class="info-tab-pane active" id="healthy-symptoms">
+                <p>A healthy leaf has consistent green coloring due to healthy chlorophyll distribution. There are no dark brown spots, water-soaked patches, or powdery residue.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="check"></i><span>Uniform leaf tissue texture and firmness.</span></li>
+                  <li><i data-lucide="check"></i><span>Clean, natural vein structures without blackening.</span></li>
+                  <li><i data-lucide="check"></i><span>No sign of leaf curling or pest infestation.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="healthy-causes">
+                <p>Maintaining crop health requires consistent watering, proper spacing, and balanced fertilizer application.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="sun"></i><span>Ensure adequate daily sunlight depending on the crop.</span></li>
+                  <li><i data-lucide="droplet"></i><span>Keep soil moist but well-drained to avoid root rot.</span></li>
+                  <li><i data-lucide="scissors"></i><span>Prune weak branches to redirect nutrients to main stems.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="healthy-prevention">
+                <p>Preventative steps are the best way to avoid crop diseases and ensure a healthy harvest.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="shield-check"></i><span>Use disease-resistant hybrid seed varieties.</span></li>
+                  <li><i data-lucide="rotate-cw"></i><span>Rotate crops every season to prevent soil-borne pathogens.</span></li>
+                  <li><i data-lucide="bug"></i><span>Inspect fields weekly to catch early signs of pest activity.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel: Early Blight -->
+        <div class="disease-info-display" id="info-early_blight">
+          <div class="info-visual-panel">
+            <img src="assets/early_blight.png" alt="Tomato early blight infected leaf sample">
+            <div class="info-label-overlay">
+              <h3>Tomato Early Blight</h3>
+              <span>Pathogen: Alternaria solani (Fungal)</span>
+            </div>
+          </div>
+          <div class="info-content-panel">
+            <div class="info-tabs-nav">
+              <button class="info-tab-btn active" data-tab="symptoms">Symptoms</button>
+              <button class="info-tab-btn" data-tab="causes">Causes</button>
+              <button class="info-tab-btn" data-tab="prevention">Prevention</button>
+            </div>
+            <div class="info-tab-contents">
+              <div class="info-tab-pane active" id="early_blight-symptoms">
+                <p>This disease shows up as dark brown spots with concentric target-like rings on older, lower leaves first.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="alert-triangle"></i><span>Concentric target spots on the leaf surface.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Yellow halos (chlorosis) forming around the brown lesions.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Stem spotting and dry rot near the fruit attachment area.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="early_blight-causes">
+                <p>Early blight is caused by the fungus <em>Alternaria solani</em>. It survives the winter in soil, crop residue, and weeds.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="thermometer"></i><span>Warm temperature ranges between 24°C and 29°C.</span></li>
+                  <li><i data-lucide="cloud-rain"></i><span>Frequent rainfall or high humidity over 85%.</span></li>
+                  <li><i data-lucide="wind"></i><span>Spores spread to other plants by wind and splashing water.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="early_blight-prevention">
+                <p>Manage early blight by keeping foliage dry and applying targeted organic treatments.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="shield-alert"></i><span>Apply copper-based organic fungicides early in the season.</span></li>
+                  <li><i data-lucide="scissors"></i><span>Remove and burn infected leaves; do not compost them.</span></li>
+                  <li><i data-lucide="droplet"></i><span>Use drip irrigation instead of overhead sprinklers.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel: Late Blight -->
+        <div class="disease-info-display" id="info-late_blight">
+          <div class="info-visual-panel">
+            <img src="assets/late_blight.png" alt="Tomato late blight infected leaf sample">
+            <div class="info-label-overlay">
+              <h3>Tomato Late Blight</h3>
+              <span>Pathogen: Phytophthora infestans (Oomycete)</span>
+            </div>
+          </div>
+          <div class="info-content-panel">
+            <div class="info-tabs-nav">
+              <button class="info-tab-btn active" data-tab="symptoms">Symptoms</button>
+              <button class="info-tab-btn" data-tab="causes">Causes</button>
+              <button class="info-tab-btn" data-tab="prevention">Prevention</button>
+            </div>
+            <div class="info-tab-contents">
+              <div class="info-tab-pane active" id="late_blight-symptoms">
+                <p>Late blight is a fast-spreading disease. It starts as large, dark green water-soaked spots that turn purplish-black.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="alert-triangle"></i><span>Large water-soaked leaf spots turning dark brown.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Fuzzy white mold on the underside of leaves when humid.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Rapid collapse and browning of the entire plant canopy.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="late_blight-causes">
+                <p>This disease is caused by <em>Phytophthora infestans</em>, an oomycete or water mold related to algae.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="thermometer-snowflake"></i><span>Cool, wet weather with temperatures between 15°C and 22°C.</span></li>
+                  <li><i data-lucide="droplet-off"></i><span>Leaves remaining wet for over 10 consecutive hours.</span></li>
+                  <li><i data-lucide="arrow-right-left"></i><span>Spores traveling long distances on wind currents.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="late_blight-prevention">
+                <p>Because late blight spreads rapidly, proactive management and monitoring are critical.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="shield-alert"></i><span>Spray organic neem oil or preventative bio-fungicides.</span></li>
+                  <li><i data-lucide="trash-2"></i><span>Immediately destroy and discard infected plant tissues.</span></li>
+                  <li><i data-lucide="grip-horizontal"></i><span>Space plants widely to help the leaves dry quickly.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel: Rice Brown Spot -->
+        <div class="disease-info-display" id="info-brown_spot">
+          <div class="info-visual-panel">
+            <img src="assets/brown_spot.png" alt="Rice brown spot infected leaf sample">
+            <div class="info-label-overlay">
+              <h3>Rice Brown Spot</h3>
+              <span>Pathogen: Bipolaris oryzae (Fungal)</span>
+            </div>
+          </div>
+          <div class="info-content-panel">
+            <div class="info-tabs-nav">
+              <button class="info-tab-btn active" data-tab="symptoms">Symptoms</button>
+              <button class="info-tab-btn" data-tab="causes">Causes</button>
+              <button class="info-tab-btn" data-tab="prevention">Prevention</button>
+            </div>
+            <div class="info-tab-contents">
+              <div class="info-tab-pane active" id="brown_spot-symptoms">
+                <p>This disease is characterized by numerous small, oval-shaped brown spots with light-colored centers on rice leaves.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="alert-triangle"></i><span>Oval, uniform brown spots looking like sesame seeds.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Grey or white centers in older spots, surrounded by brown margins.</span></li>
+                  <li><i data-lucide="alert-triangle"></i><span>Grain discoloration and empty, light-weight hulls.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="brown_spot-causes">
+                <p>Rice brown spot is caused by the fungus <em>Bipolaris oryzae</em>. It is often linked to nutrient-deficient soils.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="database"></i><span>Nutrient-deficient soils, especially lacking potassium.</span></li>
+                  <li><i data-lucide="cloud"></i><span>High relative humidity (over 90%) and leaf wetness.</span></li>
+                  <li><i data-lucide="sprout"></i><span>Fungus surviving on infected crop residues or weed hosts.</span></li>
+                </ul>
+              </div>
+              <div class="info-tab-pane" id="brown_spot-prevention">
+                <p>Prevent rice brown spot by improving soil health and using clean, certified seeds.</p>
+                <ul class="bullet-list">
+                  <li><i data-lucide="shield-check"></i><span>Apply balanced soil fertilizers, focusing on potassium.</span></li>
+                  <li><i data-lucide="shield-alert"></i><span>Treat seeds with hot water (54°C) or preventative bio-agents.</span></li>
+                  <li><i data-lucide="droplet"></i><span>Maintain proper irrigation levels to prevent soil drying.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- === SECTION: RESULTS DASHBOARD === -->
+      <section class="view-section" id="dashboard">
+        <div class="section-header">
+          <h2>Analytical Results Dashboard</h2>
+          <p>Real-time analytics and statistics showing the distribution of diagnosed leaf images.</p>
+        </div>
+        
+        <!-- Metrics Row -->
+        <div class="dashboard-metrics">
+          <div class="metric-card">
+            <div class="metric-info">
+              <h4>Total Analyzed</h4>
+              <div class="metric-number" id="dash-total">248</div>
+            </div>
+            <div class="metric-icon"><i data-lucide="database"></i></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-info">
+              <h4>Healthy Leaves</h4>
+              <div class="metric-number" id="dash-healthy">142</div>
+            </div>
+            <div class="metric-icon"><i data-lucide="smile"></i></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-info">
+              <h4>Diseased Leaves</h4>
+              <div class="metric-number" id="dash-diseased">106</div>
+            </div>
+            <div class="metric-icon"><i data-lucide="frown"></i></div>
+          </div>
+        </div>
+        
+        <!-- Charts Grid -->
+        <div class="dashboard-charts">
+          <!-- Pie/Donut Chart Card -->
+          <div class="chart-card">
+            <h3>Crop Health Distribution</h3>
+            <div class="chart-container">
+              <!-- Inline SVG Donut Chart -->
+              <svg class="svg-chart" viewBox="0 0 100 100" id="pie-chart-svg">
+                <!-- Outer Ring Background -->
+                <circle cx="50" cy="50" r="40" fill="transparent" stroke="#e2ede7" stroke-width="12" />
+                
+                <!-- Healthy Segment (57%) -->
+                <!-- stroke-dasharray: 2 * pi * 40 = 251.3 -->
+                <!-- 57% of 251.3 = 143.2 -->
+                <circle class="chart-segment" cx="50" cy="50" r="40" fill="transparent" stroke="#52b788" stroke-width="12"
+                        stroke-dasharray="143.2 251.3" stroke-dashoffset="0" transform="rotate(-90 50 50)" id="pie-segment-healthy" />
+                        
+                <!-- Diseased Segment (43%) -->
+                <!-- 43% of 251.3 = 108.1 -->
+                <circle class="chart-segment" cx="50" cy="50" r="40" fill="transparent" stroke="#d90429" stroke-width="12"
+                        stroke-dasharray="108.1 251.3" stroke-dashoffset="-143.2" transform="rotate(-90 50 50)" id="pie-segment-diseased" />
+                
+                <!-- Center details -->
+                <circle cx="50" cy="50" r="28" fill="#ffffff" />
+                <text x="50" y="47" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="700" font-size="9" fill="#1b4332">Health %</text>
+                <text x="50" y="58" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="800" font-size="10" fill="#2b9348" id="pie-center-text">57% OK</text>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-color" style="background-color: #52b788;"></div><span>Healthy (57.2%)</span></div>
+              <div class="legend-item"><div class="legend-color" style="background-color: #d90429;"></div><span>Diseased (42.8%)</span></div>
+            </div>
+          </div>
+          
+          <!-- Bar Chart Card -->
+          <div class="chart-card">
+            <h3>Specific Disease Occurrences</h3>
+            <div class="chart-container">
+              <!-- Inline SVG Bar Chart -->
+              <svg class="svg-chart" viewBox="0 0 160 120" id="bar-chart-svg">
+                <!-- Axis lines -->
+                <line x1="20" y1="100" x2="150" y2="100" stroke="#c7d6d0" stroke-width="1" />
+                <line x1="20" y1="10" x2="20" y2="100" stroke="#c7d6d0" stroke-width="1" />
+                
+                <!-- Grid Lines -->
+                <line x1="20" y1="70" x2="150" y2="70" stroke="#e2ede7" stroke-width="0.5" stroke-dasharray="2 2" />
+                <line x1="20" y1="40" x2="150" y2="40" stroke="#e2ede7" stroke-width="0.5" stroke-dasharray="2 2" />
+                <line x1="20" y1="10" x2="150" y2="10" stroke="#e2ede7" stroke-width="0.5" stroke-dasharray="2 2" />
+                
+                <!-- Y-Axis Labels -->
+                <text x="15" y="103" text-anchor="end" font-size="6" fill="#5c6f68" font-family="sans-serif">0</text>
+                <text x="15" y="73" text-anchor="end" font-size="6" fill="#5c6f68" font-family="sans-serif">30</text>
+                <text x="15" y="43" text-anchor="end" font-size="6" fill="#5c6f68" font-family="sans-serif">60</text>
+                <text x="15" y="13" text-anchor="end" font-size="6" fill="#5c6f68" font-family="sans-serif">90</text>
+                
+                <!-- Tomato Early Blight Bar (Count: 46) -->
+                <!-- Max height 90px = 90 cases -->
+                <!-- Height: 46px -->
+                <!-- Y: 100 - 46 = 54 -->
+                <rect class="bar-rect" x="35" y="54" width="18" height="46" rx="2" fill="#e85d04" id="bar-early-blight" />
+                <text x="44" y="50" text-anchor="middle" font-size="6" font-weight="700" fill="#1b4332" id="val-early-blight">46</text>
+                
+                <!-- Tomato Late Blight Bar (Count: 38) -->
+                <!-- Height: 38px -->
+                <!-- Y: 100 - 38 = 62 -->
+                <rect class="bar-rect" x="70" y="62" width="18" height="38" rx="2" fill="#d90429" id="bar-late-blight" />
+                <text x="79" y="58" text-anchor="middle" font-size="6" font-weight="700" fill="#1b4332" id="val-late-blight">38</text>
+                
+                <!-- Rice Brown Spot Bar (Count: 22) -->
+                <!-- Height: 22px -->
+                <!-- Y: 100 - 22 = 78 -->
+                <rect class="bar-rect" x="105" y="78" width="18" height="22" rx="2" fill="#9b5de5" id="bar-brown-spot" />
+                <text x="114" y="74" text-anchor="middle" font-size="6" font-weight="700" fill="#1b4332" id="val-brown-spot">22</text>
+                
+                <!-- X-Axis Labels -->
+                <text x="44" y="108" text-anchor="middle" font-size="5" fill="#5c6f68" font-weight="600">T. Early Blight</text>
+                <text x="79" y="108" text-anchor="middle" font-size="5" fill="#5c6f68" font-weight="600">T. Late Blight</text>
+                <text x="114" y="108" text-anchor="middle" font-size="5" fill="#5c6f68" font-weight="600">R. Brown Spot</text>
+              </svg>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-color" style="background-color: #e85d04;"></div><span>Tomato Early Blight</span></div>
+              <div class="legend-item"><div class="legend-color" style="background-color: #d90429;"></div><span>Tomato Late Blight</span></div>
+              <div class="legend-item"><div class="legend-color" style="background-color: #9b5de5;"></div><span>Rice Brown Spot</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Live Request Simulator Log -->
+        <div class="dashboard-disclaimer">
+          <p><i data-lucide="info" style="display:inline-block; vertical-align:middle; margin-right:0.5rem; width:16px; height:16px; color:var(--primary-light);"></i><strong>Simulation Node:</strong> The charts and analytics above are actively updated by the disease detection scanner page. Perform scans on the <strong>Disease Detection</strong> page to see these figures update in real-time.</p>
+        </div>
+      </section>
+      
+      <!-- === SECTION: CONTACT === -->
+      <section class="view-section" id="contact">
+        <div class="section-header">
+          <h2>Get in Touch</h2>
+          <p>Learn more about our university development team or submit your feedback regarding the system.</p>
+        </div>
+        
+        <div class="contact-container">
+          <!-- Left: Student Info -->
+          <div class="contact-info-panel">
+            <div class="university-card">
+              <div class="univ-name">Sri Siddhartha Institute of Technology</div>
+              <h4 class="project-title">Department of Computer Science & Engineering</h4>
+              <p style="margin-bottom: 2rem; color: var(--text-muted); font-size: 0.95rem;">This website was developed as part of our College Community Service Project under the guidance of our project supervisor. Our goal is to leverage basic image processing to solve real-world problems in agriculture.</p>
+              
+              <div class="student-list">
+                <div class="student-item">
+                  <div class="student-avatar">AP</div>
+                  <div class="student-details">
+                    <h5>Abhishek Prasad</h5>
+                    <p>USN: 1SS23CS001 | CSE 6th Sem</p>
+                  </div>
+                </div>
+                <div class="student-item">
+                  <div class="student-avatar">KN</div>
+                  <div class="student-details">
+                    <h5>Kiran N.</h5>
+                    <p>USN: 1SS23CS012 | CSE 6th Sem</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="guide-details">
+                <div class="guide-icon"><i data-lucide="user-check"></i></div>
+                <div class="guide-text">
+                  <h5>Dr. H. V. Girish</h5>
+                  <p>Assistant Professor & Project Coordinator</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right: Feedback Form -->
+          <div class="feedback-card">
+            <h3>Feedback Form</h3>
+            <p>Please share your suggestions to help us improve the leaf detection model.</p>
+            
+            <form id="feedback-form" onsubmit="event.preventDefault();">
+              <div class="form-group">
+                <label for="fb-name">Full Name</label>
+                <input type="text" id="fb-name" class="form-control" placeholder="Enter your name" required>
+              </div>
+              <div class="form-group">
+                <label for="fb-email">Email Address</label>
+                <input type="email" id="fb-email" class="form-control" placeholder="Enter your email" required>
+              </div>
+              <div class="form-group">
+                <label for="fb-role">Your Role</label>
+                <select id="fb-role" class="form-control" required>
+                  <option value="" disabled selected>Select your role</option>
+                  <option value="farmer">Farmer</option>
+                  <option value="student">Student / Researcher</option>
+                  <option value="faculty">Faculty Member</option>
+                  <option value="guest">General Guest</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="fb-message">Message / Suggestions</label>
+                <textarea id="fb-message" class="form-control" placeholder="What can we improve? (e.g. detect more crops, better treatment suggestions...)" required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" id="form-submit-btn" style="width: 100%; margin-top: 1rem;"><i data-lucide="send"></i>Submit Feedback</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+    
+    <!-- --- FORM SUCCESS MODAL --- -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal-card">
+        <div class="modal-icon"><i data-lucide="badge-check"></i></div>
+        <h3>Feedback Received!</h3>
+        <p>Thank you for submitting your feedback. Your suggestions will help our team refine the leaf disease segmentation threshold values in our Python model.</p>
+        <button class="btn btn-primary" id="modal-close-btn" style="width: 100%;"><i data-lucide="check"></i>Done</button>
+      </div>
+    </div>
+    
+    <!-- --- FOOTER --- -->
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i data-lucide="leaf"></i> AgriVision
+        </div>
+        <p class="footer-text">Community Service Project – Leaf Disease Detection Using Basic Image Processing</p>
+        <div class="footer-tech">
+          <span>Python</span>
+          <span>OpenCV</span>
+          <span>NumPy</span>
+          <span>JavaScript</span>
+        </div>
+        <p style="font-size: 0.75rem; color: #8da198; margin-top: 1rem;">&copy; 2026 Kailash Reddy. All Rights Reserved.</p>
+      </div>
+    </footer>
+    
+  </div>
+
+  <!-- Lucide Vector Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="app.js"></script>
+</body>
+</html>
